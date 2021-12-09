@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'My Esprit Zen' %}
+
+{% block body %}
+
+    <!-- ##### Hero Area Start ##### -->
+    <div class="hero-area">
+        <!-- Hero Slides Area -->
+        <div class="hero-slides owl-carousel">
+            {% for article in articles_random %}
+                <!-- Single Slide -->
+                <div class="single-hero-slide bg-img" style="background-image: url(img/bg-img/b2.jpg);">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-12">
+                                <div class="slide-content text-center">
+                                    <div class="post-tag">
+                                        <a href="#" data-animation="fadeInUp">{{ article.category }}</a>
+                                    </div>
+                                    <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{ path('show', {id: article.id, slug: article.slug}) }}">{{ article.titre }}</a></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- ##### Hero Area End ##### -->
+
+    <!-- ##### Blog Wrapper Start ##### -->
+    <div class="blog-wrapper section-padding-100 clearfix">
+        <div class="container">
+            <div class="row align-items-end">
+                <!-- Single Blog Area -->
+                <div class="col-12 col-lg-4">
+                    <div class="single-blog-area clearfix mb-100">
+                        <!-- Blog Content -->
+                        <div class="single-blog-content">
+                            <div class="line"></div>
+                            <h4><a href="#" class="post-headline">Bienvenue sur le blog de<br> My Esprit Zen</a></h4>
+                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum</p>
+                            <a href="{{ path('index') }}" class="btn original-btn">Voir tout les articles</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Blog Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-catagory-area clearfix mb-100">
+                        <img src="img/blog-img/1.jpg" alt="">
+                        <!-- Catagory Title -->
+                        <div class="catagory-title">
+                            <a href="#">Articles tendances</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Blog Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-catagory-area clearfix mb-100">
+                        <img src="img/blog-img/2.jpg" alt="">
+                        <!-- Catagory Title -->
+                        <div class="catagory-title">
+                            <a href="#">Derniers articles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    {% for key, article in liste_article %}
+                        {% if key == 2 %}
+                            <!-- Single Blog Area  -->
+                            <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1000ms">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="single-blog-thumbnail">
+                                            {% if article.imagePresentation %}
+                                                <a href="{{ path('show', {id: article.id, slug: article.slug}) }}"><img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt=""></a>
+                                            {% else %}
+                                                <a href="{{ path('show', {id: article.id, slug: article.slug}) }}"><img src="{{ 'img/article-images/empty.png' }}" alt = "">
+                                            {% endif %}
+                                            <div class="post-date">
+                                                <a href="#">{{ article.date|date("d") }} <span>{{ article.date|localizeddate('none', 'none', null, null, 'MMMM Y') }}</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <!-- Blog Content -->
+                                        <div class="single-blog-content mt-50">
+                                            <div class="line"></div>
+                                            <a href="#" class="post-tag">{{ article.category }}</a>
+                                            <h4><a href="{{ path('show', {id: article.id, slug: article.slug}) }}" class="post-headline">{{ article.titre }}</a></h4>
+                                            <p>{{ article.description | striptags | slice(0, 400)}}...</p>
+                                            <div class="post-meta">
+                                                <a href="{{ path('show', {id: article.id, slug: article.slug}) }}" class="btn original-btn">Lire la suite</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <!-- Single Blog Area  -->
+                            <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1000ms">
+                                <div class="row align-items-center">
+                                    <div class="col-12 col-md-6">
+                                        <div class="single-blog-thumbnail">
+                                            {% if article.imagePresentation %}
+                                                <a href="{{ path('show', {id: article.id, slug: article.slug}) }}"><img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt=""></a>
+                                            {% else %}
+                                                <a href="{{ path('show', {id: article.id, slug: article.slug}) }}"><img src="{{ 'img/article-images/empty.png' }}" alt = "">
+                                            {% endif %}
+                                            <div class="post-date">
+                                                <a href="#">{{ article.date|date("d") }}<span>{{ article.date|localizeddate('none', 'none', null, null, 'MMMM Y') }}</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <!-- Blog Content -->
+                                        <div class="single-blog-content">
+                                            <div class="line"></div>
+                                            <a href="#" class="post-tag">{{ article.category }}</a>
+                                            <h4><a href="{{ path('show', {id: article.id, slug: article.slug}) }}" class="post-headline">{{ article.titre }}</a></h4>
+                                            <p>{{ article.description | striptags | slice(0, 400)}}...</p>
+                                            <div class="post-meta">
+                                                <a href="{{ path('show', {id: article.id, slug: article.slug}) }}" class="btn original-btn">Lire la suite</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <!-- Load More -->
+                    <div class="load-more-btn mt-100 wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="1000ms">
+                        <a href="{{ path('index') }}" class="btn original-btn">Voir tout les articles</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- ##### Blog Wrapper End ##### -->
+
+{% endblock %}

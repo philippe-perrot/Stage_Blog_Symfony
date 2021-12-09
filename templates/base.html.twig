@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}My Esprit Zen{% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="original-load"></div>
+        </div>
+    </div>
+
+    <!-- Subscribe Modal -->
+    <div class="subscribe-newsletter-area">
+        <div class="modal fade" id="subsModal" tabindex="-1" role="dialog" aria-labelledby="subsModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="modal-body">
+                        <h5 class="title">Se connecter</h5>
+                        <form action="#" class="newsletterForm" method="post">
+                            <input type="text" name="login" id="subscribesForm2" placeholder="Login">
+                            <input type="password" name="password" id="subscribesForm2" placeholder="Mot de passe">
+                            <button type="submit" class="btn original-btn">Connexion</button>
+                            <a href="#" style="margin-left: 1em;">Mot de passe oublié ?</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- Top Header Area -->
+        <div class="top-header">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <!-- Breaking News Area -->
+                    <div class="col-12 col-sm-8">
+                        <div class="breaking-news-area">
+                            <div id="breakingNewsTicker" class="ticker">
+                                <ul>
+                                    <li><a href="#">Hello World!</a></li>
+                                    <li><a href="#">Hello Universe!</a></li>
+                                    <li><a href="#">Hello Original!</a></li>
+                                    <li><a href="#">Hello Earth!</a></li>
+                                    <li><a href="#">Hello Colorlib!</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Top Social Area -->
+                    <div class="col-12 col-sm-4">
+                        <div class="top-social-area">
+                            <a href="https://www.instagram.com/myespritzen/" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/myespritzen/" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo Area -->
+        <div class="logo-area text-center">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <a href="{{ path('home') }}" class="original-logo"><img src="img/myespritzen.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nav Area -->
+        <div class="original-nav-area" id="stickyNav">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu" id="originalNav">
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                                    <li><a href="#">Articles</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{ path('index') }}">Tous les articles</a></li>
+                                            {% for category in liste_category %}
+                                                <li><a href="#">{{ category.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{ path('about-us') }}">A propos</a></li>
+                                    <li style="margin-right: 20em;"><a href="{{ path('contact') }}">Nous contacter</a></li>
+                                    <li><div class="subscribe-btn"><a href="#" class="btn subscribe-btn" style="color:white;" data-toggle="modal" data-target="#subsModal">Se connecter</a></div></li>
+                                    <li><a href="#">S'inscrire</a></li>
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+{% block body %}{% endblock %}
+
+
+    <!-- ##### Instagram Feed Area Start ##### -->
+    <div class="instagram-feed-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="insta-title">
+                        <a href="https://www.instagram.com/myespritzen"><h5>Suivez-nous sur Instagram @myespritzen</h5></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Instagram Slides -->
+        <div class="instagram-slides owl-carousel">
+            <!-- Single Insta Feed -->
+            <div class="single-insta-feed">
+                <img src="img/instagram-img/1.png" alt="">
+                <!-- Hover Effects -->
+                <div class="hover-effects">
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <!-- Single Insta Feed -->
+            <div class="single-insta-feed">
+                <img src="img/instagram-img/2.png" alt="">
+                <!-- Hover Effects -->
+                <div class="hover-effects">
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <!-- Single Insta Feed -->
+            <div class="single-insta-feed">
+                <img src="img/instagram-img/3.png" alt="">
+                <!-- Hover Effects -->
+                <div class="hover-effects">
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <!-- Single Insta Feed -->
+            <div class="single-insta-feed">
+                <img src="img/instagram-img/4.png" alt="">
+                <!-- Hover Effects -->
+                <div class="hover-effects">
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <!-- Single Insta Feed -->
+            <div class="single-insta-feed">
+                <img src="img/instagram-img/5.png" alt="">
+                <!-- Hover Effects -->
+                <div class="hover-effects">
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <!-- Single Insta Feed -->
+            <div class="single-insta-feed">
+                <img src="img/instagram-img/6.png" alt="">
+                <!-- Hover Effects -->
+                <div class="hover-effects">
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <!-- Single Insta Feed -->
+            <div class="single-insta-feed">
+                <img src="img/instagram-img/7.png" alt="">
+                <!-- Hover Effects -->
+                <div class="hover-effects">
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Instagram Feed Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Footer Nav Area -->
+                    <div class="classy-nav-container breakpoint-off">
+                        <!-- Classy Menu -->
+                        <nav class="classy-navbar justify-content-center">
+
+                            <!-- Navbar Toggler -->
+                            <div class="classy-navbar-toggler">
+                                <span class="navbarToggler"><span></span><span></span><span></span></span>
+                            </div>
+
+                            <!-- Menu -->
+                            <div class="classy-menu">
+
+                                <!-- close btn -->
+                                <div class="classycloseIcon">
+                                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                                </div>
+
+                                <!-- Nav Start -->
+                                <div class="classynav">
+                                    <ul>
+                                        <li><a href="{{ path('home') }}">Accueil</a></li>
+                                        <li><a href="{{ path('index') }}">Nos actualités</a></li>
+                                        <li><a href="{{ path('about-us') }}">A propos de nous</a></li>
+                                        <li><a href="{{ path('contact') }}">Contact</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Nav End -->
+                            </div>
+                        </nav>
+                    </div>
+
+                    <!-- Footer Social Area -->
+                    <div class="footer-social-area mt-30">
+                        <a href="https://www.instagram.com/myespritzen/" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/myespritzen/" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="{{ asset('js/jquery/jquery-2.2.4.min.js') }}"></script>
+    <!-- Popper js -->
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <!-- Bootstrap js -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- Plugins js -->
+    <script src="{{ asset('js/plugins.js') }}"></script>
+    <!-- Active js -->
+    <script src="{{ asset('js/active.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+
+    <script>
+        $('select').select2();
+    </script>
+
+    {% block javascripts %}{% endblock %}
+
+</body>
+</html>

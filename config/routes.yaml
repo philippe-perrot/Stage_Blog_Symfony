@@ -1,0 +1,27 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+home:
+  path: /
+  controller: App\Controller\HomeController::home
+
+index:
+  path: /les-articles
+  controller: App\Controller\HomeController::index
+
+contact:
+  path: /contact
+  controller: App\Controller\HomeController::contact
+
+about-us:
+  path: /a-propos-de-nous
+  controller: App\Controller\HomeController::about
+
+show:
+  path: /article/{slug}-{id}
+  controller: App\Controller\HomeController::show
+  requirements:
+    slug : '[a-z0-9\-]*'
+
+
